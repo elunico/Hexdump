@@ -42,7 +42,22 @@ void hexdump_with_chars(FILE *file)
                 printf("\n          ");
                 for (int i = 0; i < 0x10; i++) {
                     if (line[i] < ' ' || line[i] > 255) {
-                        printf(" . ");
+                        switch (line[i]) {
+                            case 0xa:
+                                printf("\\n ");
+                                break;
+                            case 0xd:
+                                printf("\\r ");
+                                break;
+                            case 0x8:
+                                printf("\\a ");
+                                break;
+                            case 0x0:
+                                printf("\\0 ");
+                                break;
+                            default:
+                                printf(" . ");
+                        }
                     } else {
                         printf(" %c ", line[i]);
                     }
