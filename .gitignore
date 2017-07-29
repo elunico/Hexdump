@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/Hexdump.iml
+.idea/codeStyleSettings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+cmake-build-debug/
