@@ -2,33 +2,6 @@
 #include <mem.h>
 
 
-void hexdump_with_chars(FILE *file);
-
-int hexdump(FILE *file)
-{
-    int buf;
-    unsigned int count = 0;
-    while ((buf = getc(file)) != EOF) {
-        if (count % 0x10 == 0) {
-            printf("\n%08x  ", count);
-        }
-        printf("%02x ", buf);
-        count++;
-    }
-}
-
-int main(int argc, char const **argv)
-{
-    if (strcmp(argv[1], "-c") == 0) {
-        FILE *f = fopen(argv[2], "rb");
-        hexdump_with_chars(f);
-    } else {
-        FILE *f = fopen(argv[1], "rb");
-        hexdump(f);
-    }
-    return 0;
-}
-
 void hexdump_with_chars(FILE *file)
 {
     int buf;
@@ -71,3 +44,29 @@ void hexdump_with_chars(FILE *file)
         count++;
     }
 }
+
+int hexdump(FILE *file)
+{
+    int buf;
+    unsigned int count = 0;
+    while ((buf = getc(file)) != EOF) {
+        if (count % 0x10 == 0) {
+            printf("\n%08x  ", count);
+        }
+        printf("%02x ", buf);
+        count++;
+    }
+}
+
+int main(int argc, char const **argv)
+{
+    if (strcmp(argv[1], "-c") == 0) {
+        FILE *f = fopen(argv[2], "rb");
+        hexdump_with_chars(f);
+    } else {
+        FILE *f = fopen(argv[1], "rb");
+        hexdump(f);
+    }
+    return 0;
+}
+
