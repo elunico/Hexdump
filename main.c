@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include <mem.h>
-
+#include <string.h>
 
 void hexdump_with_chars(FILE *file)
 {
